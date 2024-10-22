@@ -31,20 +31,19 @@ function renderLicenseLink(license) {
     let license = "GNU General Public";
     return '(https://www.gnu.org/licenses/gpl-3.0)';
   } else if (license === "BSD") {
-    return '(https://opensource.org/licenses/BSD-3-Clause)'
+    return '(https://opensource.org/licenses/BSD-3-Clause)';
   }
 };
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
 function renderLicenseSection(data) {
   const licenseData = data.license;
-  const oLicense = data.oLicense;
   const userLicenseBadge = renderLicenseBadge(licenseData);
   const userLicenseLink = renderLicenseLink(licenseData);
-  if (licenseData === '') {
+  if (licenseData === '' || licenseData === undefined) {
     return '';
   } else {
-    return `----------------------\n Published under the ${licenseData}${oLicense} license.\n ${userLicenseBadge}\n ${userLicenseLink}\n ----------------------\n`;
+    return `## License\n ----------------------\n Published under the ${licenseData}${oLicense} license.\n ${userLicenseBadge}\n ${userLicenseLink}\n ----------------------\n`;
   }
 };
 
@@ -52,6 +51,7 @@ function renderLicenseSection(data) {
 function generateMarkdown(data) {
   const licenseSection = renderLicenseSection(answerList);
   return `# ${data.title}\n
+## ${data.description}\n
 ## Description\n
 "${data.longDesc}"\n
 \n
@@ -66,6 +66,7 @@ function generateMarkdown(data) {
 - [Usage](#usage)\n
 - [Credits](#credits)\n
 - [License](#license)\n
+- [Questions](#questions)\n
 \n
 ## Installation\n
 \n
@@ -77,9 +78,12 @@ ${data.usage}\n
 \n
 ## Credits\n
 \n
-## License
-
-${licenseSection}\n
+${licenseSection}
+## Questions\n
+\n
+GitHub Repository: ${data.repo}\n
+\n
+Contact me here: ${data.contact}\n
 `;
 };
 
