@@ -1,5 +1,4 @@
 // TODO: Create a function that returns a license badge based on which license is passed in
-import {answerList} from '../index.js';
 // If there is no license, return an empty string
 function renderLicenseBadge(license) {
   if (license === '') {
@@ -19,7 +18,7 @@ function renderLicenseBadge(license) {
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
-  if (license === '') {
+  if (license === '' || license === 'None') {
     return '';
   } else if (license === "Apache 2.0") {
     return '(https://opensource.org/licenses/Apache-2.0)';
@@ -36,20 +35,19 @@ function renderLicenseLink(license) {
 };
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
-function renderLicenseSection(data) {
-  const licenseData = data.license;
-  const userLicenseBadge = renderLicenseBadge(licenseData);
-  const userLicenseLink = renderLicenseLink(licenseData);
-  if (licenseData === '' || licenseData === undefined) {
+function renderLicenseSection(license) {
+  const userLicenseBadge = renderLicenseBadge(license);
+  const userLicenseLink = renderLicenseLink(license);
+  if (license === '' || license === "None") {
     return '';
   } else {
-    return `## License\n ----------------------\n Published under the ${licenseData}${oLicense} license.\n ${userLicenseBadge}\n ${userLicenseLink}\n ----------------------\n`;
+    return `## License\n ----------------------\n Published under the ${license} license.\n ${userLicenseBadge}\n ${userLicenseLink}\n ----------------------\n`;
   }
 };
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-  const licenseSection = renderLicenseSection(answerList);
+  const licenseSection = renderLicenseSection(data.license);
   return `# ${data.title}\n
 ## ${data.description}\n
 ## Description\n
@@ -77,13 +75,14 @@ ${data.installation}\n
 ${data.usage}\n
 \n
 ## Credits\n
+${data.creds}
 \n
 ${licenseSection}
 ## Questions\n
 \n
 GitHub Repository: ${data.repo}\n
 \n
-Contact me here: ${data.contact}\n
+Contact me here: [${data.contact}](${data.contact})\n
 `;
 };
 

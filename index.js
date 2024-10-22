@@ -92,11 +92,9 @@ function init() {
             },
         ])
         .then(function(response) {
-            console.log(response);
             const renderAnswers = generateMarkdown(response);
             writeToFile('./build/generatedREADME.md', renderAnswers);
         });
     };
     // Function call to initialize app
     init();
-export {answerList};
