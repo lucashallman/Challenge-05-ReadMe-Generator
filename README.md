@@ -2,6 +2,8 @@
 
 ## Make your README in a consistent and organized fashion everytime!
 
+A tutorial is available for this program at the following link: https://www.youtube.com/watch?v=2WPCLda_erI
+
 ## Description
 
 "This program uses Inquirer to take user input via the command line. Then it processes and formats the information via javascript, and outputs a markdown file with the formatted information."
