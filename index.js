@@ -4,7 +4,7 @@ import colors from 'colors';
 import fs, { write } from 'fs';
 import generateMarkdown from './utils/generateMarkdown.js';
 // TODO: Create an array of questions for user input
-const questions = ["Give a one sentence description.", "Please expand on what this project does and how it does it.", "What problem does this project seek to solve?", "How does this project go about solving that problem?", "Did you have any difficulties in completing this project or solving this problem?", "What did you learn?", "hat makes your project stand out?", ];
+const questions = ["Give a one sentence description.", "Please expand on what this project does and how it does it.", "What problem does this project seek to solve?", "How does this project go about solving that problem?", "Did you have any difficulties in completing this project or solving this problem?", "What did you learn?", "What makes your project stand out?", ];
 const sysQuestions = ["What is the title?", "Please link your github repository here.", "If you'd like, provide your email or best form of contact here." , "What license will you be using?", "What is the best way to install this project?", "Once it is installed, how do you use it?", "Would you like to credit any other organizations or people that helped to complete this assignment? Please list their names, seperated by commas."];
 const licenseSelect = ["Apache", "MIT", "Mozilla", "GNU General Public License", "BSD", "None"];
 let answerList = {};
